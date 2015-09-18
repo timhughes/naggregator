@@ -2,13 +2,13 @@
 Description=Naggregator
 
 [Service]
-ExecStart=/opt/naggregator_venv/bin/twistd \
+ExecStart=/opt/naggregator/bin/twistd \
     --nodaemon \
     --pidfile=/var/run/naggregator.pid \
     --logfile=/var/log/naggregator.log \
     naggregator
 
-WorkingDirectory=/opt/naggregator/src
+WorkingDirectory=/opt/naggregator
 
 #User=nobody
 #Group=nobody
