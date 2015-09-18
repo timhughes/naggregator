@@ -1,0 +1,47 @@
+.title{
+	text-align:center;
+}
+
+.server-name {
+	font-weight: bold;
+	font-size:x-large;
+}
+
+.host-status {
+	background: black;
+	color: white;
+	font-weight: bold;
+	list-style:none
+}
+
+.service-status {
+	font-weight: bold;
+	list-style:none;
+}
+
+.service-status-CRITICAL {
+	background: red;
+	color: white;
+	font-weight: bold;
+}
+
+.service-status-CRITICAL a:link{
+    color: #A9D0F5;
+}
+.service-status-CRITICAL a:visited{
+    color: #A9D0F5;
+}
+
+.service-status-UNKNOWN {
+	background: orange;
+	font-weight: bold;
+}
+.service-status-WARNING {
+	background: yellow;
+	font-weight: bold;
+}
+
+.service-status-OK {
+	background: green;
+	font-weight: bold;
+}

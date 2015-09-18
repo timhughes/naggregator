@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/vendor/bootstrap.css">
+        <style>
+	      body {
+	        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+	      }
+	    </style>
+        <link rel="stylesheet" href="css/vendor/bootstrap-responsive.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/naggregator.css">
+        
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.1.min.js"><\/script>')</script>
+        <script src="js/vendor/underscore-1.4.4.js"></script>
+        <script src="js/vendor/backbone-1.0.0.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/naggregator.js"></script>
+        <!-- backbone templates -->
+      
+        <script type="text/template" id="nagios-server-template">
+            <span class="server-name"><a href="<%= uri %>" target="_blank"><%= name %></a></span>
+            <% if (hosts_error || services_error) { %>
+                <div class="alert alert-error">
+                    <% if (hosts_error){ %>
+                        <strong>Hosts not updating!</strong> Last Updated: <%= hosts_lastupdate_utc %> UTC.
+                    <% }; %>
+                    <% if (services_error){ %>
+                        <strong>Services not updating!</strong> Last Updated: <%= services_lastupdate_utc %> UTC.
+                    <% }; %>
+                </div>
+            <% }; %>
+            <table class="table table-condensed">
+                <tr>
+                    <th>State</th>
+                    <th>Hostname</th>
+                    <th>Service</th>
+                    <th>Message</th>
+                    <th>Attempt</th>
+                </tr>
+                <% _.each(hosts, function(host) { %>
+                <% if (host.current_state != 'UP' && host.current_state != null) { %>
+                <tr class="host-status">
+                    <td><%= host.current_state%></td>
+                    <td><a href="<%= host.uri %>" target="_blank"><%= host.name %></a></td>
+                    <td></td>
+                    <td><%= host.plugin_output %></td>
+                    <td></td>
+                </tr>
+                <% }; %>
+                <% }); %>                
+                <% var statuses = [['CRITICAL', 'error'], ['WARNING', 'warning'], ['UNKNOWN', 'info'], ['OK','success']]; %>
+                <% for (status in statuses) { %>
+                <% _.each(hosts, function(host) { %>
+                <% _.each(host.services, function(service) { %>
+                <% if (statuses[status][0] == service.current_state) { %>  
+                <tr class="service-status-<%= statuses[status][0] %>">
+                    <td><%= service.current_state %></td>
+                    <td><%= host.name %></td>
+                    <td><a href="<%= service.uri %>" target="_blank"><%= service.name %></a></td>
+                    <td><%= service.plugin_output %></td>
+                    <td><%= service.current_attempt %></td>
+                </tr>
+                <% }; %>
+                <% }); %>
+                <% }); %>
+                <% }; %>
+            </table>
+        </script>
+
+        <script type="text/template" id="dashboard-template">
+            <div class="navbar navbar-inverse navbar-fixed-top">
+              <div class="navbar-inner">
+                <div class="container-fluid">
+                  <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="brand" href="https://bitbucket.org/timhughes/naggregator/">Naggregator</a>
+                  <div class="nav-collapse collapse">
+                  <ul class="nav pull-right">                     
+                      <li><a href="https://bitbucket.org/timhughes/naggregator/issues?status=new&status=open" target="_blank">Raise a Issue</a></li>
+                    </ul>
+                  </div><!--/.nav-collapse -->
+                </div>
+              </div>
+            </div>
+            <div class="container-fluid">
+            <ul class="nagios-servers"></ul>
+            </div>
+        </script> 
+        
+                                                  
+        <!-- end backbone templates -->
+        <script type="application/javascript">
+            $(function() {
+                window.library.fetch();
+            });
+        </script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <div class="container-fluid" id="container"><!-- add a loading image in here --></div>
+
+
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            //var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            //(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            //g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            //s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+        
+        <script src="js/vendor/bootstrap.js"></script>
+
+        
+        
+        
+    </body>
+
+</html>
+       

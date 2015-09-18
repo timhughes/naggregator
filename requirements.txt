@@ -1,0 +1,7 @@
+twisted
+CorePost
+BeautifulSoup4
+PyCrypto
+pyasn1
+pyOpenSSL
+simplejson

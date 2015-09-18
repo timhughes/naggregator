@@ -1,0 +1,12 @@
+.project
+.pydevproject
+.settings
+/twistd.pid
+/twistd.log
+*.pyc
+*.pyo
+*/dropin.cache
+*.swp
+*.swo
+.pydevproject
+.project
