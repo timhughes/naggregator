@@ -1,4 +1,4 @@
-twisted
+twisted==17.9.0
 CorePost
 BeautifulSoup4
 PyCrypto
