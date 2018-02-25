@@ -1,7 +1,7 @@
 twisted==17.9.0
 CorePost==0.0.16
 BeautifulSoup4==4.6.0
-PyCrypto
+PyCrypto==2.6.1
 pyasn1
 pyOpenSSL
 simplejson
