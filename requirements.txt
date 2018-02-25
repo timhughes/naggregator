@@ -3,5 +3,5 @@ CorePost==0.0.16
 BeautifulSoup4==4.6.0
 PyCrypto==2.6.1
 pyasn1==0.4.2
-pyOpenSSL
+pyOpenSSL==17.5.0
 simplejson
