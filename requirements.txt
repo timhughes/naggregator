@@ -1,5 +1,5 @@
 twisted==17.9.0
-CorePost
+CorePost==0.0.16
 BeautifulSoup4
 PyCrypto
 pyasn1
