@@ -4,4 +4,4 @@ BeautifulSoup4==4.6.0
 PyCrypto==2.6.1
 pyasn1==0.4.2
 pyOpenSSL==17.5.0
-simplejson
+simplejson==3.13.2
