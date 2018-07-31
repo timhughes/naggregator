@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="css/vendor/bootstrap-responsive.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/naggregator.css">
-        
+
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.1.min.js"><\/script>')</script>
@@ -31,7 +31,7 @@
         <script src="js/plugins.js"></script>
         <script src="js/naggregator.js"></script>
         <!-- backbone templates -->
-      
+
         <script type="text/template" id="nagios-server-template">
             <span class="server-name"><a href="<%= uri %>" target="_blank"><%= name %></a></span>
             <% if (hosts_error || services_error) { %>
@@ -62,12 +62,12 @@
                     <td></td>
                 </tr>
                 <% }; %>
-                <% }); %>                
+                <% }); %>
                 <% var statuses = [['CRITICAL', 'error'], ['WARNING', 'warning'], ['UNKNOWN', 'info'], ['OK','success']]; %>
                 <% for (status in statuses) { %>
                 <% _.each(hosts, function(host) { %>
                 <% _.each(host.services, function(service) { %>
-                <% if (statuses[status][0] == service.current_state) { %>  
+                <% if (statuses[status][0] == service.current_state) { %>
                 <tr class="service-status-<%= statuses[status][0] %>">
                     <td><%= service.current_state %></td>
                     <td><%= host.name %></td>
@@ -93,7 +93,7 @@
                   </button>
                   <a class="brand" href="https://bitbucket.org/timhughes/naggregator/">Naggregator</a>
                   <div class="nav-collapse collapse">
-                  <ul class="nav pull-right">                     
+                  <ul class="nav pull-right">
                       <li><a href="https://bitbucket.org/timhughes/naggregator/issues?status=new&status=open" target="_blank">Raise a Issue</a></li>
                     </ul>
                   </div><!--/.nav-collapse -->
@@ -103,9 +103,8 @@
             <div class="container-fluid">
             <ul class="nagios-servers"></ul>
             </div>
-        </script> 
-        
-                                                  
+        </script>
+
         <!-- end backbone templates -->
         <script type="application/javascript">
             $(function() {
@@ -121,8 +120,6 @@
         <!-- Add your site or application content here -->
         <div class="container-fluid" id="container"><!-- add a loading image in here --></div>
 
-
-
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             //var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
@@ -130,13 +127,8 @@
             //g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
             //s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
-        
+
         <script src="js/vendor/bootstrap.js"></script>
-
-        
-        
-        
     </body>
-
 </html>
-       
+
