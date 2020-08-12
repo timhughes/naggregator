@@ -27,10 +27,7 @@ class BodyProducer(object):
 
     def __init__(self, body):
         self.body = body
-        if self.body is None:
-            self.length = 0
-        else:
-            self.length = len(body)
+        self.length = 0 if self.body is None else len(body)
 
     def startProducing(self, consumer):
         consumer.write(self.body)
